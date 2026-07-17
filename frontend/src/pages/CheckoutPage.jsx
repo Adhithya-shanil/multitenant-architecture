@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import StoreShell from '../core/StoreShell';
 import { useStore } from '../context/StoreContext';
 import { useCart } from '../core/cart/CartContext';
+import { formatSelections } from '../core/cart/formatSelections';
 
 const PAYMENT_METHODS = [
   { value: 'card', label: 'Card' },
@@ -24,16 +25,21 @@ function OrderSummary({ items, subtotal, currency }) {
         Order Summary
       </h2>
       <div className="flex flex-col gap-2">
-        {items.map((item) => (
-          <div key={item.productId} className="flex items-center justify-between text-sm text-[var(--color-text)]">
-            <span>
-              {item.name} × {item.quantity}
-            </span>
-            <span className="text-[var(--color-muted)]">
-              {item.currency} {item.price * item.quantity}
-            </span>
-          </div>
-        ))}
+        {items.map((item) => {
+          const selectionsLabel = formatSelections(item.selections);
+          return (
+            <div key={item.lineId} className="flex items-center justify-between text-sm text-[var(--color-text)]">
+              <span>
+                {item.name}
+                {selectionsLabel && <span className="text-[var(--color-muted)]"> ({selectionsLabel})</span>} ×{' '}
+                {item.quantity}
+              </span>
+              <span className="text-[var(--color-muted)]">
+                {item.currency} {item.price * item.quantity}
+              </span>
+            </div>
+          );
+        })}
       </div>
       <div className="flex items-center justify-between border-t border-[var(--color-border)] pt-3 text-base font-semibold text-[var(--color-text)]">
         <span>Total</span>

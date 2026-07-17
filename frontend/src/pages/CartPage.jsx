@@ -2,6 +2,7 @@ import { Link, useParams } from 'react-router-dom';
 import StoreShell from '../core/StoreShell';
 import { useStore } from '../context/StoreContext';
 import { useCart } from '../core/cart/CartContext';
+import { formatSelections } from '../core/cart/formatSelections';
 
 function EmptyCart({ store }) {
   return (
@@ -25,6 +26,8 @@ function EmptyCart({ store }) {
 }
 
 function CartLineItem({ item, onIncrement, onDecrement, onRemove }) {
+  const selectionsLabel = formatSelections(item.selections);
+
   return (
     <div
       className="flex items-center gap-4 border border-[var(--color-border)] bg-[var(--color-surface)] p-4"
@@ -33,6 +36,7 @@ function CartLineItem({ item, onIncrement, onDecrement, onRemove }) {
       <div className="text-3xl">{item.image}</div>
       <div className="flex-1">
         <p className="font-medium text-[var(--color-text)]">{item.name}</p>
+        {selectionsLabel && <p className="text-xs text-[var(--color-muted)]">{selectionsLabel}</p>}
         <p className="text-sm text-[var(--color-muted)]">
           {item.currency} {item.price}
         </p>
@@ -83,11 +87,11 @@ function CartContent() {
       <div className="flex flex-col gap-4">
         {items.map((item) => (
           <CartLineItem
-            key={item.productId}
+            key={item.lineId}
             item={item}
-            onIncrement={() => updateQuantity(item.productId, item.quantity + 1)}
-            onDecrement={() => updateQuantity(item.productId, item.quantity - 1)}
-            onRemove={() => removeItem(item.productId)}
+            onIncrement={() => updateQuantity(item.lineId, item.quantity + 1)}
+            onDecrement={() => updateQuantity(item.lineId, item.quantity - 1)}
+            onRemove={() => removeItem(item.lineId)}
           />
         ))}
       </div>

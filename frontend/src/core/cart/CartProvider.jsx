@@ -18,6 +18,18 @@ function readStoredItems(storeHandle) {
   }
 }
 
+// A product plus a set of vertical selections (size, spice level, ...) is
+// its own cart line - "Essential Crew Tee, size M" and "..., size L" are
+// different lines, not the same one with a quantity of 2.
+function computeLineId(productId, selections) {
+  const entries = Object.entries(selections ?? {}).filter(
+    ([, value]) => value !== undefined && value !== null && !(Array.isArray(value) && value.length === 0),
+  );
+  if (entries.length === 0) return productId;
+  entries.sort(([a], [b]) => a.localeCompare(b));
+  return `${productId}::${JSON.stringify(entries)}`;
+}
+
 export default function CartProvider({ storeHandle, children }) {
   const [items, setItems] = useState(() => readStoredItems(storeHandle));
 
@@ -30,38 +42,42 @@ export default function CartProvider({ storeHandle, children }) {
     localStorage.setItem(storageKey(storeHandle), JSON.stringify(items));
   }, [storeHandle, items]);
 
-  function addItem(product, quantity = 1) {
+  function addItem(product, quantity = 1, selections = {}) {
+    const lineId = computeLineId(product.id, selections);
+
     setItems((prev) => {
-      const existing = prev.find((item) => item.productId === product.id);
+      const existing = prev.find((item) => item.lineId === lineId);
       if (existing) {
         return prev.map((item) =>
-          item.productId === product.id ? { ...item, quantity: item.quantity + quantity } : item,
+          item.lineId === lineId ? { ...item, quantity: item.quantity + quantity } : item,
         );
       }
       return [
         ...prev,
         {
+          lineId,
           productId: product.id,
           name: product.name,
           price: product.price,
           currency: product.currency,
           image: product.image,
           quantity,
+          selections,
         },
       ];
     });
   }
 
-  function removeItem(productId) {
-    setItems((prev) => prev.filter((item) => item.productId !== productId));
+  function removeItem(lineId) {
+    setItems((prev) => prev.filter((item) => item.lineId !== lineId));
   }
 
-  function updateQuantity(productId, quantity) {
+  function updateQuantity(lineId, quantity) {
     if (quantity <= 0) {
-      removeItem(productId);
+      removeItem(lineId);
       return;
     }
-    setItems((prev) => prev.map((item) => (item.productId === productId ? { ...item, quantity } : item)));
+    setItems((prev) => prev.map((item) => (item.lineId === lineId ? { ...item, quantity } : item)));
   }
 
   function clearCart() {
