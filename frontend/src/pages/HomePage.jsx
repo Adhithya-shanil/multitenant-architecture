@@ -1,17 +1,14 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { fetchStores } from '../api/stores';
+import { getCategoryConfig } from '../config/categoryConfig';
 import LoadingSpinner from '../core/LoadingSpinner';
 import Navbar from '../core/Navbar';
 import Footer from '../core/Footer';
 
-const CATEGORY_LABEL = {
-  food: 'Food',
-  clothes: 'Clothes',
-  pharma: 'Pharma',
-};
-
 function StoreCard({ store }) {
+  const categoryLabel = getCategoryConfig(store.category).label;
+
   return (
     <Link
       to={`/${store.handle}`}
@@ -22,7 +19,7 @@ function StoreCard({ store }) {
       <p className="text-sm text-[var(--color-muted)]">{store.tagline}</p>
       <div className="mt-2 flex gap-2 text-xs font-medium">
         <span className="rounded-[var(--radius-pill)] bg-[var(--color-bg)] px-2.5 py-1 text-[var(--color-muted)]">
-          {CATEGORY_LABEL[store.category] ?? store.category}
+          {categoryLabel}
         </span>
         <span className="rounded-[var(--radius-pill)] bg-[var(--color-bg)] px-2.5 py-1 text-[var(--color-muted)]">
           {store.theme}
