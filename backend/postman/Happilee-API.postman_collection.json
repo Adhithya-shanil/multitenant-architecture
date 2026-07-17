@@ -1,0 +1,339 @@
+{
+  "info": {
+    "name": "Happilee Storefront API",
+    "description": "Prototype API for the Happilee multi-tenant, multi-vertical storefront architecture. All data is hardcoded JSON (no DB). Import this collection into Postman, or copy the curl in each request's description to run it from a terminal.\n\nBase URL variable: {{baseUrl}} (defaults to http://localhost:4000). Make sure the backend is running first: `npm run dev` inside backend/.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:4000",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Health",
+      "item": [
+        {
+          "name": "Health Check",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/health",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "health"]
+            },
+            "description": "curl -s {{baseUrl}}/api/health"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Stores - List & Detail",
+      "item": [
+        {
+          "name": "List All Stores (home page grid)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/stores",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "stores"]
+            },
+            "description": "Returns the 9 stores (3 categories x 3 themes) used to render the home page grid.\n\ncurl -s {{baseUrl}}/api/stores"
+          },
+          "response": []
+        },
+        {
+          "name": "Store Detail - spice-garden (food / theme1)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/stores/spice-garden",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "stores", "spice-garden"]
+            },
+            "description": "This is the \"first API\" called when /:store_name loads. Response carries the `category` and `theme` tokens the frontend caches in state.\n\ncurl -s {{baseUrl}}/api/stores/spice-garden"
+          },
+          "response": []
+        },
+        {
+          "name": "Store Detail - burger-barn (food / theme2)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/stores/burger-barn",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "stores", "burger-barn"]
+            },
+            "description": "curl -s {{baseUrl}}/api/stores/burger-barn"
+          },
+          "response": []
+        },
+        {
+          "name": "Store Detail - sushi-central (food / theme3)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/stores/sushi-central",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "stores", "sushi-central"]
+            },
+            "description": "curl -s {{baseUrl}}/api/stores/sushi-central"
+          },
+          "response": []
+        },
+        {
+          "name": "Store Detail - urban-thread (clothes / theme1)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/stores/urban-thread",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "stores", "urban-thread"]
+            },
+            "description": "curl -s {{baseUrl}}/api/stores/urban-thread"
+          },
+          "response": []
+        },
+        {
+          "name": "Store Detail - denim-district (clothes / theme2)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/stores/denim-district",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "stores", "denim-district"]
+            },
+            "description": "curl -s {{baseUrl}}/api/stores/denim-district"
+          },
+          "response": []
+        },
+        {
+          "name": "Store Detail - vogue-vault (clothes / theme3)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/stores/vogue-vault",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "stores", "vogue-vault"]
+            },
+            "description": "curl -s {{baseUrl}}/api/stores/vogue-vault"
+          },
+          "response": []
+        },
+        {
+          "name": "Store Detail - wellness-mart (pharma / theme1)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/stores/wellness-mart",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "stores", "wellness-mart"]
+            },
+            "description": "curl -s {{baseUrl}}/api/stores/wellness-mart"
+          },
+          "response": []
+        },
+        {
+          "name": "Store Detail - healthplus-pharmacy (pharma / theme2)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/stores/healthplus-pharmacy",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "stores", "healthplus-pharmacy"]
+            },
+            "description": "curl -s {{baseUrl}}/api/stores/healthplus-pharmacy"
+          },
+          "response": []
+        },
+        {
+          "name": "Store Detail - carewell-chemist (pharma / theme3)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/stores/carewell-chemist",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "stores", "carewell-chemist"]
+            },
+            "description": "curl -s {{baseUrl}}/api/stores/carewell-chemist"
+          },
+          "response": []
+        },
+        {
+          "name": "Store Detail - Not Found (expect 404)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/stores/not-a-store",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "stores", "not-a-store"]
+            },
+            "description": "Unknown handle should return 404 with an error message.\n\ncurl -s -w \"\\nSTATUS:%{http_code}\\n\" {{baseUrl}}/api/stores/not-a-store"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Products",
+      "item": [
+        {
+          "name": "Products - spice-garden (food)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/stores/spice-garden/products",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "stores", "spice-garden", "products"]
+            },
+            "description": "Food product attributes: spice_level (select), modifiers (multiselect), veg (boolean).\n\ncurl -s {{baseUrl}}/api/stores/spice-garden/products"
+          },
+          "response": []
+        },
+        {
+          "name": "Products - burger-barn (food)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/stores/burger-barn/products",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "stores", "burger-barn", "products"]
+            },
+            "description": "curl -s {{baseUrl}}/api/stores/burger-barn/products"
+          },
+          "response": []
+        },
+        {
+          "name": "Products - sushi-central (food)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/stores/sushi-central/products",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "stores", "sushi-central", "products"]
+            },
+            "description": "curl -s {{baseUrl}}/api/stores/sushi-central/products"
+          },
+          "response": []
+        },
+        {
+          "name": "Products - urban-thread (clothes)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/stores/urban-thread/products",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "stores", "urban-thread", "products"]
+            },
+            "description": "Clothes product attributes: size (select), color (select), material (text).\n\ncurl -s {{baseUrl}}/api/stores/urban-thread/products"
+          },
+          "response": []
+        },
+        {
+          "name": "Products - denim-district (clothes)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/stores/denim-district/products",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "stores", "denim-district", "products"]
+            },
+            "description": "curl -s {{baseUrl}}/api/stores/denim-district/products"
+          },
+          "response": []
+        },
+        {
+          "name": "Products - vogue-vault (clothes)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/stores/vogue-vault/products",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "stores", "vogue-vault", "products"]
+            },
+            "description": "curl -s {{baseUrl}}/api/stores/vogue-vault/products"
+          },
+          "response": []
+        },
+        {
+          "name": "Products - wellness-mart (pharma)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/stores/wellness-mart/products",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "stores", "wellness-mart", "products"]
+            },
+            "description": "Pharma product attributes: dosage (text), pack_size (text), requires_prescription (boolean), active_ingredient (text).\n\ncurl -s {{baseUrl}}/api/stores/wellness-mart/products"
+          },
+          "response": []
+        },
+        {
+          "name": "Products - healthplus-pharmacy (pharma)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/stores/healthplus-pharmacy/products",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "stores", "healthplus-pharmacy", "products"]
+            },
+            "description": "curl -s {{baseUrl}}/api/stores/healthplus-pharmacy/products"
+          },
+          "response": []
+        },
+        {
+          "name": "Products - carewell-chemist (pharma)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/stores/carewell-chemist/products",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "stores", "carewell-chemist", "products"]
+            },
+            "description": "curl -s {{baseUrl}}/api/stores/carewell-chemist/products"
+          },
+          "response": []
+        },
+        {
+          "name": "Products - Store Not Found (expect 404)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/stores/not-a-store/products",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "stores", "not-a-store", "products"]
+            },
+            "description": "curl -s -w \"\\nSTATUS:%{http_code}\\n\" {{baseUrl}}/api/stores/not-a-store/products"
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

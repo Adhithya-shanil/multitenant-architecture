@@ -1,0 +1,19 @@
+{
+  "name": "happilee-backend",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Prototype backend for the Happilee multi-tenant, multi-vertical storefront architecture. Data is hardcoded as JSON (no DB) for now.",
+  "type": "commonjs",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}

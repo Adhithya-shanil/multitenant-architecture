@@ -1,0 +1,396 @@
+[
+  {
+    "id": "pr_spice-garden_1",
+    "storeHandle": "spice-garden",
+    "name": "Paneer Butter Masala",
+    "price": 220,
+    "currency": "INR",
+    "image": "🍛",
+    "description": "Cottage cheese cubes in a rich tomato-butter gravy.",
+    "attributes": [
+      { "key": "spice_level", "label": "Spice Level", "type": "select", "options": ["Mild", "Medium", "Hot"], "value": "Medium" },
+      { "key": "modifiers", "label": "Add-ons", "type": "multiselect", "options": ["Extra Butter", "Extra Gravy", "No Onion"], "value": [] },
+      { "key": "veg", "label": "Vegetarian", "type": "boolean", "value": true }
+    ]
+  },
+  {
+    "id": "pr_spice-garden_2",
+    "storeHandle": "spice-garden",
+    "name": "Chicken Biryani",
+    "price": 260,
+    "currency": "INR",
+    "image": "🍚",
+    "description": "Slow-cooked basmati rice layered with spiced chicken.",
+    "attributes": [
+      { "key": "spice_level", "label": "Spice Level", "type": "select", "options": ["Mild", "Medium", "Hot"], "value": "Hot" },
+      { "key": "modifiers", "label": "Add-ons", "type": "multiselect", "options": ["Extra Raita", "Boiled Egg"], "value": [] },
+      { "key": "veg", "label": "Vegetarian", "type": "boolean", "value": false }
+    ]
+  },
+  {
+    "id": "pr_spice-garden_3",
+    "storeHandle": "spice-garden",
+    "name": "Masala Dosa",
+    "price": 120,
+    "currency": "INR",
+    "image": "🥞",
+    "description": "Crisp rice crepe with a spiced potato filling.",
+    "attributes": [
+      { "key": "spice_level", "label": "Spice Level", "type": "select", "options": ["Mild", "Medium", "Hot"], "value": "Mild" },
+      { "key": "modifiers", "label": "Add-ons", "type": "multiselect", "options": ["Extra Chutney", "Extra Sambar"], "value": [] },
+      { "key": "veg", "label": "Vegetarian", "type": "boolean", "value": true }
+    ]
+  },
+
+  {
+    "id": "pr_burger-barn_1",
+    "storeHandle": "burger-barn",
+    "name": "Classic Cheeseburger",
+    "price": 180,
+    "currency": "INR",
+    "image": "🍔",
+    "description": "Grilled beef patty, cheddar, lettuce, house sauce.",
+    "attributes": [
+      { "key": "spice_level", "label": "Spice Level", "type": "select", "options": ["Mild", "Medium", "Hot"], "value": "Mild" },
+      { "key": "modifiers", "label": "Add-ons", "type": "multiselect", "options": ["Extra Cheese", "Bacon", "Jalapenos"], "value": [] },
+      { "key": "veg", "label": "Vegetarian", "type": "boolean", "value": false }
+    ]
+  },
+  {
+    "id": "pr_burger-barn_2",
+    "storeHandle": "burger-barn",
+    "name": "Loaded Fries",
+    "price": 140,
+    "currency": "INR",
+    "image": "🍟",
+    "description": "Crispy fries loaded with cheese sauce and herbs.",
+    "attributes": [
+      { "key": "spice_level", "label": "Spice Level", "type": "select", "options": ["Mild", "Medium", "Hot"], "value": "Medium" },
+      { "key": "modifiers", "label": "Add-ons", "type": "multiselect", "options": ["Extra Cheese Sauce", "Peri Peri"], "value": [] },
+      { "key": "veg", "label": "Vegetarian", "type": "boolean", "value": true }
+    ]
+  },
+  {
+    "id": "pr_burger-barn_3",
+    "storeHandle": "burger-barn",
+    "name": "Grilled Veggie Burger",
+    "price": 160,
+    "currency": "INR",
+    "image": "🥗",
+    "description": "Grilled vegetable patty with fresh greens.",
+    "attributes": [
+      { "key": "spice_level", "label": "Spice Level", "type": "select", "options": ["Mild", "Medium", "Hot"], "value": "Mild" },
+      { "key": "modifiers", "label": "Add-ons", "type": "multiselect", "options": ["Extra Cheese", "Avocado"], "value": [] },
+      { "key": "veg", "label": "Vegetarian", "type": "boolean", "value": true }
+    ]
+  },
+
+  {
+    "id": "pr_sushi-central_1",
+    "storeHandle": "sushi-central",
+    "name": "California Roll",
+    "price": 320,
+    "currency": "INR",
+    "image": "🍣",
+    "description": "Crab, avocado and cucumber, rolled and sliced.",
+    "attributes": [
+      { "key": "spice_level", "label": "Spice Level", "type": "select", "options": ["Mild", "Medium", "Hot"], "value": "Mild" },
+      { "key": "modifiers", "label": "Add-ons", "type": "multiselect", "options": ["Extra Wasabi", "Extra Soy Sauce"], "value": [] },
+      { "key": "veg", "label": "Vegetarian", "type": "boolean", "value": false }
+    ]
+  },
+  {
+    "id": "pr_sushi-central_2",
+    "storeHandle": "sushi-central",
+    "name": "Spicy Tuna Roll",
+    "price": 380,
+    "currency": "INR",
+    "image": "🍣",
+    "description": "Fresh tuna with a spicy mayo kick.",
+    "attributes": [
+      { "key": "spice_level", "label": "Spice Level", "type": "select", "options": ["Mild", "Medium", "Hot"], "value": "Hot" },
+      { "key": "modifiers", "label": "Add-ons", "type": "multiselect", "options": ["Extra Spicy Mayo"], "value": [] },
+      { "key": "veg", "label": "Vegetarian", "type": "boolean", "value": false }
+    ]
+  },
+  {
+    "id": "pr_sushi-central_3",
+    "storeHandle": "sushi-central",
+    "name": "Vegetable Tempura",
+    "price": 240,
+    "currency": "INR",
+    "image": "🍤",
+    "description": "Crisp battered seasonal vegetables.",
+    "attributes": [
+      { "key": "spice_level", "label": "Spice Level", "type": "select", "options": ["Mild", "Medium", "Hot"], "value": "Mild" },
+      { "key": "modifiers", "label": "Add-ons", "type": "multiselect", "options": ["Extra Dip"], "value": [] },
+      { "key": "veg", "label": "Vegetarian", "type": "boolean", "value": true }
+    ]
+  },
+
+  {
+    "id": "pr_urban-thread_1",
+    "storeHandle": "urban-thread",
+    "name": "Essential Crew Tee",
+    "price": 599,
+    "currency": "INR",
+    "image": "👕",
+    "description": "Soft cotton crew-neck t-shirt for everyday wear.",
+    "attributes": [
+      { "key": "size", "label": "Size", "type": "select", "options": ["S", "M", "L", "XL"], "value": "M" },
+      { "key": "color", "label": "Color", "type": "select", "options": ["Black", "White", "Grey"], "value": "Black" },
+      { "key": "material", "label": "Material", "type": "text", "value": "100% Cotton" }
+    ]
+  },
+  {
+    "id": "pr_urban-thread_2",
+    "storeHandle": "urban-thread",
+    "name": "Oversized Hoodie",
+    "price": 1299,
+    "currency": "INR",
+    "image": "🧥",
+    "description": "Relaxed-fit fleece hoodie with kangaroo pocket.",
+    "attributes": [
+      { "key": "size", "label": "Size", "type": "select", "options": ["S", "M", "L", "XL"], "value": "L" },
+      { "key": "color", "label": "Color", "type": "select", "options": ["Black", "Olive", "Beige"], "value": "Olive" },
+      { "key": "material", "label": "Material", "type": "text", "value": "80% Cotton, 20% Polyester" }
+    ]
+  },
+  {
+    "id": "pr_urban-thread_3",
+    "storeHandle": "urban-thread",
+    "name": "Cargo Joggers",
+    "price": 999,
+    "currency": "INR",
+    "image": "👖",
+    "description": "Utility-pocket joggers with an elastic cuff.",
+    "attributes": [
+      { "key": "size", "label": "Size", "type": "select", "options": ["S", "M", "L", "XL"], "value": "M" },
+      { "key": "color", "label": "Color", "type": "select", "options": ["Black", "Khaki"], "value": "Khaki" },
+      { "key": "material", "label": "Material", "type": "text", "value": "Cotton Blend" }
+    ]
+  },
+
+  {
+    "id": "pr_denim-district_1",
+    "storeHandle": "denim-district",
+    "name": "Slim Fit Jeans",
+    "price": 1499,
+    "currency": "INR",
+    "image": "👖",
+    "description": "Stretch denim with a modern slim fit.",
+    "attributes": [
+      { "key": "size", "label": "Size", "type": "select", "options": ["28", "30", "32", "34", "36"], "value": "32" },
+      { "key": "color", "label": "Color", "type": "select", "options": ["Indigo", "Black", "Light Wash"], "value": "Indigo" },
+      { "key": "material", "label": "Material", "type": "text", "value": "98% Cotton, 2% Elastane" }
+    ]
+  },
+  {
+    "id": "pr_denim-district_2",
+    "storeHandle": "denim-district",
+    "name": "Denim Jacket",
+    "price": 2199,
+    "currency": "INR",
+    "image": "🧥",
+    "description": "Classic trucker jacket in washed denim.",
+    "attributes": [
+      { "key": "size", "label": "Size", "type": "select", "options": ["S", "M", "L", "XL"], "value": "M" },
+      { "key": "color", "label": "Color", "type": "select", "options": ["Light Wash", "Dark Wash"], "value": "Dark Wash" },
+      { "key": "material", "label": "Material", "type": "text", "value": "100% Cotton Denim" }
+    ]
+  },
+  {
+    "id": "pr_denim-district_3",
+    "storeHandle": "denim-district",
+    "name": "Denim Skirt",
+    "price": 1199,
+    "currency": "INR",
+    "image": "👗",
+    "description": "A-line denim skirt with front buttons.",
+    "attributes": [
+      { "key": "size", "label": "Size", "type": "select", "options": ["XS", "S", "M", "L"], "value": "S" },
+      { "key": "color", "label": "Color", "type": "select", "options": ["Indigo", "Black"], "value": "Indigo" },
+      { "key": "material", "label": "Material", "type": "text", "value": "100% Cotton Denim" }
+    ]
+  },
+
+  {
+    "id": "pr_vogue-vault_1",
+    "storeHandle": "vogue-vault",
+    "name": "Silk Wrap Dress",
+    "price": 3499,
+    "currency": "INR",
+    "image": "👗",
+    "description": "Elegant silk dress with a flattering wrap silhouette.",
+    "attributes": [
+      { "key": "size", "label": "Size", "type": "select", "options": ["XS", "S", "M", "L"], "value": "S" },
+      { "key": "color", "label": "Color", "type": "select", "options": ["Emerald", "Burgundy", "Black"], "value": "Emerald" },
+      { "key": "material", "label": "Material", "type": "text", "value": "100% Mulberry Silk" }
+    ]
+  },
+  {
+    "id": "pr_vogue-vault_2",
+    "storeHandle": "vogue-vault",
+    "name": "Tailored Blazer",
+    "price": 4299,
+    "currency": "INR",
+    "image": "🧥",
+    "description": "Structured blazer with a tailored fit.",
+    "attributes": [
+      { "key": "size", "label": "Size", "type": "select", "options": ["S", "M", "L"], "value": "M" },
+      { "key": "color", "label": "Color", "type": "select", "options": ["Black", "Camel"], "value": "Camel" },
+      { "key": "material", "label": "Material", "type": "text", "value": "Wool Blend" }
+    ]
+  },
+  {
+    "id": "pr_vogue-vault_3",
+    "storeHandle": "vogue-vault",
+    "name": "Statement Heels",
+    "price": 2799,
+    "currency": "INR",
+    "image": "👠",
+    "description": "Pointed-toe heels for an evening look.",
+    "attributes": [
+      { "key": "size", "label": "Size", "type": "select", "options": ["36", "37", "38", "39", "40"], "value": "38" },
+      { "key": "color", "label": "Color", "type": "select", "options": ["Black", "Red", "Nude"], "value": "Red" },
+      { "key": "material", "label": "Material", "type": "text", "value": "Faux Leather" }
+    ]
+  },
+
+  {
+    "id": "pr_wellness-mart_1",
+    "storeHandle": "wellness-mart",
+    "name": "Paracetamol 500mg",
+    "price": 25,
+    "currency": "INR",
+    "image": "💊",
+    "description": "For relief from fever and mild to moderate pain.",
+    "attributes": [
+      { "key": "dosage", "label": "Dosage", "type": "text", "value": "500mg" },
+      { "key": "pack_size", "label": "Pack Size", "type": "text", "value": "10 tablets" },
+      { "key": "requires_prescription", "label": "Requires Prescription", "type": "boolean", "value": false },
+      { "key": "active_ingredient", "label": "Active Ingredient", "type": "text", "value": "Paracetamol" }
+    ]
+  },
+  {
+    "id": "pr_wellness-mart_2",
+    "storeHandle": "wellness-mart",
+    "name": "Amoxicillin 250mg",
+    "price": 85,
+    "currency": "INR",
+    "image": "💊",
+    "description": "Antibiotic used to treat bacterial infections.",
+    "attributes": [
+      { "key": "dosage", "label": "Dosage", "type": "text", "value": "250mg" },
+      { "key": "pack_size", "label": "Pack Size", "type": "text", "value": "15 capsules" },
+      { "key": "requires_prescription", "label": "Requires Prescription", "type": "boolean", "value": true },
+      { "key": "active_ingredient", "label": "Active Ingredient", "type": "text", "value": "Amoxicillin" }
+    ]
+  },
+  {
+    "id": "pr_wellness-mart_3",
+    "storeHandle": "wellness-mart",
+    "name": "Vitamin C Tablets",
+    "price": 150,
+    "currency": "INR",
+    "image": "🍊",
+    "description": "Immunity support supplement.",
+    "attributes": [
+      { "key": "dosage", "label": "Dosage", "type": "text", "value": "1000mg" },
+      { "key": "pack_size", "label": "Pack Size", "type": "text", "value": "30 tablets" },
+      { "key": "requires_prescription", "label": "Requires Prescription", "type": "boolean", "value": false },
+      { "key": "active_ingredient", "label": "Active Ingredient", "type": "text", "value": "Ascorbic Acid" }
+    ]
+  },
+
+  {
+    "id": "pr_healthplus-pharmacy_1",
+    "storeHandle": "healthplus-pharmacy",
+    "name": "Cetirizine 10mg",
+    "price": 40,
+    "currency": "INR",
+    "image": "💊",
+    "description": "Antihistamine for allergy relief.",
+    "attributes": [
+      { "key": "dosage", "label": "Dosage", "type": "text", "value": "10mg" },
+      { "key": "pack_size", "label": "Pack Size", "type": "text", "value": "10 tablets" },
+      { "key": "requires_prescription", "label": "Requires Prescription", "type": "boolean", "value": false },
+      { "key": "active_ingredient", "label": "Active Ingredient", "type": "text", "value": "Cetirizine" }
+    ]
+  },
+  {
+    "id": "pr_healthplus-pharmacy_2",
+    "storeHandle": "healthplus-pharmacy",
+    "name": "Metformin 500mg",
+    "price": 60,
+    "currency": "INR",
+    "image": "💊",
+    "description": "Used to manage blood sugar in type 2 diabetes.",
+    "attributes": [
+      { "key": "dosage", "label": "Dosage", "type": "text", "value": "500mg" },
+      { "key": "pack_size", "label": "Pack Size", "type": "text", "value": "20 tablets" },
+      { "key": "requires_prescription", "label": "Requires Prescription", "type": "boolean", "value": true },
+      { "key": "active_ingredient", "label": "Active Ingredient", "type": "text", "value": "Metformin Hydrochloride" }
+    ]
+  },
+  {
+    "id": "pr_healthplus-pharmacy_3",
+    "storeHandle": "healthplus-pharmacy",
+    "name": "Digital Thermometer",
+    "price": 199,
+    "currency": "INR",
+    "image": "🌡️",
+    "description": "Fast, accurate digital body temperature reading.",
+    "attributes": [
+      { "key": "pack_size", "label": "Pack Size", "type": "text", "value": "1 unit" },
+      { "key": "requires_prescription", "label": "Requires Prescription", "type": "boolean", "value": false },
+      { "key": "warranty", "label": "Warranty", "type": "text", "value": "1 Year" }
+    ]
+  },
+
+  {
+    "id": "pr_carewell-chemist_1",
+    "storeHandle": "carewell-chemist",
+    "name": "Ibuprofen 400mg",
+    "price": 35,
+    "currency": "INR",
+    "image": "💊",
+    "description": "Nonsteroidal anti-inflammatory for pain relief.",
+    "attributes": [
+      { "key": "dosage", "label": "Dosage", "type": "text", "value": "400mg" },
+      { "key": "pack_size", "label": "Pack Size", "type": "text", "value": "10 tablets" },
+      { "key": "requires_prescription", "label": "Requires Prescription", "type": "boolean", "value": false },
+      { "key": "active_ingredient", "label": "Active Ingredient", "type": "text", "value": "Ibuprofen" }
+    ]
+  },
+  {
+    "id": "pr_carewell-chemist_2",
+    "storeHandle": "carewell-chemist",
+    "name": "Azithromycin 500mg",
+    "price": 110,
+    "currency": "INR",
+    "image": "💊",
+    "description": "Antibiotic for treating a range of bacterial infections.",
+    "attributes": [
+      { "key": "dosage", "label": "Dosage", "type": "text", "value": "500mg" },
+      { "key": "pack_size", "label": "Pack Size", "type": "text", "value": "3 tablets" },
+      { "key": "requires_prescription", "label": "Requires Prescription", "type": "boolean", "value": true },
+      { "key": "active_ingredient", "label": "Active Ingredient", "type": "text", "value": "Azithromycin" }
+    ]
+  },
+  {
+    "id": "pr_carewell-chemist_3",
+    "storeHandle": "carewell-chemist",
+    "name": "Multivitamin Capsules",
+    "price": 220,
+    "currency": "INR",
+    "image": "🍊",
+    "description": "Daily multivitamin and mineral supplement.",
+    "attributes": [
+      { "key": "dosage", "label": "Dosage", "type": "text", "value": "1 capsule/day" },
+      { "key": "pack_size", "label": "Pack Size", "type": "text", "value": "30 capsules" },
+      { "key": "requires_prescription", "label": "Requires Prescription", "type": "boolean", "value": false },
+      { "key": "active_ingredient", "label": "Active Ingredient", "type": "text", "value": "Multivitamin Blend" }
+    ]
+  }
+]

@@ -1,0 +1,83 @@
+[
+  {
+    "id": "st_001",
+    "handle": "spice-garden",
+    "name": "Spice Garden",
+    "category": "food",
+    "theme": "theme1",
+    "tagline": "Home-style meals, delivered hot.",
+    "logoEmoji": "🍛"
+  },
+  {
+    "id": "st_002",
+    "handle": "burger-barn",
+    "name": "Burger Barn",
+    "category": "food",
+    "theme": "theme2",
+    "tagline": "Stacked. Grilled. Loaded.",
+    "logoEmoji": "🍔"
+  },
+  {
+    "id": "st_003",
+    "handle": "sushi-central",
+    "name": "Sushi Central",
+    "category": "food",
+    "theme": "theme3",
+    "tagline": "Fresh rolls, fast.",
+    "logoEmoji": "🍣"
+  },
+  {
+    "id": "st_004",
+    "handle": "urban-thread",
+    "name": "Urban Thread",
+    "category": "clothes",
+    "theme": "theme1",
+    "tagline": "Everyday streetwear essentials.",
+    "logoEmoji": "👕"
+  },
+  {
+    "id": "st_005",
+    "handle": "denim-district",
+    "name": "Denim District",
+    "category": "clothes",
+    "theme": "theme2",
+    "tagline": "Denim done right.",
+    "logoEmoji": "👖"
+  },
+  {
+    "id": "st_006",
+    "handle": "vogue-vault",
+    "name": "Vogue Vault",
+    "category": "clothes",
+    "theme": "theme3",
+    "tagline": "Curated fashion, curated taste.",
+    "logoEmoji": "👗"
+  },
+  {
+    "id": "st_007",
+    "handle": "wellness-mart",
+    "name": "Wellness Mart",
+    "category": "pharma",
+    "theme": "theme1",
+    "tagline": "Your neighbourhood pharmacy, online.",
+    "logoEmoji": "💊"
+  },
+  {
+    "id": "st_008",
+    "handle": "healthplus-pharmacy",
+    "name": "HealthPlus Pharmacy",
+    "category": "pharma",
+    "theme": "theme2",
+    "tagline": "Trusted medicines, fast delivery.",
+    "logoEmoji": "⚕️"
+  },
+  {
+    "id": "st_009",
+    "handle": "carewell-chemist",
+    "name": "CareWell Chemist",
+    "category": "pharma",
+    "theme": "theme3",
+    "tagline": "Care that reaches your door.",
+    "logoEmoji": "🩺"
+  }
+]
