@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useOptionalStore } from '../context/StoreContext';
+import { useOptionalCart } from './cart/CartContext';
 import { getCategoryConfig } from '../config/categoryConfig';
 
 // One Navbar, used on the home page and on every store page. It never
@@ -7,7 +8,16 @@ import { getCategoryConfig } from '../config/categoryConfig';
 // store (if any) + that category's config say to show.
 export default function Navbar() {
   const store = useOptionalStore();
+  const cart = useOptionalCart();
   const config = store ? getCategoryConfig(store.category) : null;
+  const itemCount = cart?.itemCount ?? 0;
+
+  const cartBadge = (
+    <span className="flex items-center gap-2 rounded-[var(--radius-pill)] border border-[var(--color-border)] px-3 py-1.5 text-sm text-[var(--color-text)]">
+      <span>🛒</span>
+      <span>{itemCount}</span>
+    </span>
+  );
 
   return (
     <header className="sticky top-0 z-10 border-b border-[var(--color-border)] bg-[var(--color-surface)]">
@@ -29,10 +39,13 @@ export default function Navbar() {
           </nav>
         )}
 
-        <div className="flex items-center gap-2 rounded-[var(--radius-pill)] border border-[var(--color-border)] px-3 py-1.5 text-sm text-[var(--color-text)]">
-          <span>🛒</span>
-          <span>0</span>
-        </div>
+        {store ? (
+          <Link to={`/${store.handle}/cart`} aria-label="View cart">
+            {cartBadge}
+          </Link>
+        ) : (
+          cartBadge
+        )}
       </div>
     </header>
   );
