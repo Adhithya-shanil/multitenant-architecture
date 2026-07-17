@@ -2,8 +2,11 @@ import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { fetchStoreByHandle, fetchStoreProducts } from '../api/stores';
 import { StoreContext } from '../context/StoreContext';
-import LoadingSpinner from '../components/LoadingSpinner';
-import ProductCard from '../components/ProductCard';
+import { getCategoryConfig } from '../config/categoryConfig';
+import LoadingSpinner from '../core/LoadingSpinner';
+import ProductCard from '../core/ProductCard';
+import Navbar from '../core/Navbar';
+import Footer from '../core/Footer';
 import ThemeProvider from '../theme/ThemeProvider';
 
 export default function StorePage() {
@@ -65,25 +68,38 @@ export default function StorePage() {
   }, [handle, isLoading, error, store]);
 
   if (isLoading) {
-    return <LoadingSpinner label={`Loading ${handle}...`} />;
+    return (
+      <>
+        <Navbar />
+        <LoadingSpinner label={`Loading ${handle}...`} />
+        <Footer />
+      </>
+    );
   }
 
   if (error || !store) {
     return (
-      <div className="flex min-h-[60vh] flex-col items-center justify-center gap-3 text-center">
-        <p className="text-lg font-medium text-slate-900">Store "{handle}" not found</p>
-        {error?.message && <p className="text-sm text-slate-500">{error.message}</p>}
-        <Link to="/" className="text-sm font-medium text-slate-700 underline">
-          Back to home
-        </Link>
-      </div>
+      <>
+        <Navbar />
+        <div className="flex min-h-[60vh] flex-col items-center justify-center gap-3 text-center">
+          <p className="text-lg font-medium text-[var(--color-text)]">Store "{handle}" not found</p>
+          {error?.message && <p className="text-sm text-[var(--color-muted)]">{error.message}</p>}
+          <Link to="/" className="text-sm font-medium text-[var(--color-text)] underline">
+            Back to home
+          </Link>
+        </div>
+        <Footer />
+      </>
     );
   }
+
+  const categoryConfig = getCategoryConfig(store.category);
 
   return (
     <StoreContext.Provider value={store}>
       <ThemeProvider theme={store.theme}>
-        <div className="mx-auto max-w-5xl px-6 py-12">
+        <Navbar />
+        <main className="mx-auto max-w-5xl px-6 py-12">
           <header className="mb-8 flex items-center gap-4">
             <div className="text-5xl">{store.logoEmoji}</div>
             <div>
@@ -111,7 +127,7 @@ export default function StorePage() {
               className="mb-4 text-lg font-semibold text-[var(--color-text)]"
               style={{ fontFamily: 'var(--font-heading)' }}
             >
-              Products
+              {categoryConfig.productsSectionTitle}
             </h2>
 
             {productsLoading && <LoadingSpinner label="Loading products..." />}
@@ -132,7 +148,8 @@ export default function StorePage() {
               </div>
             )}
           </section>
-        </div>
+        </main>
+        <Footer />
       </ThemeProvider>
     </StoreContext.Provider>
   );

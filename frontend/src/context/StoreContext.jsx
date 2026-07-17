@@ -12,3 +12,11 @@ export function useStore() {
   }
   return ctx;
 }
+
+// Same as useStore(), but safe to call from components that render both
+// inside a store page (Navbar/Footer showing store-specific info) and
+// outside one (the same Navbar/Footer showing generic Happilee branding
+// on the home page). Returns null instead of throwing when there's no store.
+export function useOptionalStore() {
+  return useContext(StoreContext);
+}
