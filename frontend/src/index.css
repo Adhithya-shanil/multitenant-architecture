@@ -10,3 +10,24 @@ body {
   margin: 0;
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }
+
+/*
+ * Neutral fallback tokens. Pages that aren't inside a <ThemeProvder> yet
+ * (home grid, the top-level "loading store..." spinner before we know the
+ * theme) inherit these. Once <ThemeProvider theme="themeN"> mounts, it sets
+ * the same variable names on its own wrapper, which shadows these for
+ * everything underneath it.
+ */
+:root {
+  --color-bg: #f8fafc;
+  --color-surface: #ffffff;
+  --color-primary: #475569;
+  --color-primary-contrast: #ffffff;
+  --color-text: #0f172a;
+  --color-muted: #64748b;
+  --color-border: #e2e8f0;
+  --radius-card: 0.75rem;
+  --radius-pill: 999px;
+  --font-heading: system-ui, -apple-system, sans-serif;
+  --font-body: system-ui, -apple-system, sans-serif;
+}

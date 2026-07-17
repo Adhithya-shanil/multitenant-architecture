@@ -14,24 +14,32 @@ function formatAttribute(attr) {
 
 export default function ProductCard({ product }) {
   return (
-    <div className="flex flex-col gap-3 rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+    <div
+      className="flex flex-col gap-3 border border-[var(--color-border)] bg-[var(--color-surface)] p-5 shadow-sm"
+      style={{ borderRadius: 'var(--radius-card)' }}
+    >
       <div className="flex items-start justify-between gap-3">
         <div className="text-4xl">{product.image}</div>
         <div className="text-right">
-          <div className="text-lg font-semibold text-slate-900">
+          <div className="text-lg font-semibold text-[var(--color-primary)]">
             {product.currency} {product.price}
           </div>
         </div>
       </div>
-      <h3 className="text-base font-semibold text-slate-900">{product.name}</h3>
-      <p className="text-sm text-slate-500">{product.description}</p>
+      <h3
+        className="text-base font-semibold text-[var(--color-text)]"
+        style={{ fontFamily: 'var(--font-heading)' }}
+      >
+        {product.name}
+      </h3>
+      <p className="text-sm text-[var(--color-muted)]">{product.description}</p>
 
       {product.attributes?.length > 0 && (
         <div className="flex flex-wrap gap-1.5 pt-1">
           {product.attributes.map((attr) => (
             <span
               key={attr.key}
-              className="rounded-full bg-slate-100 px-2 py-1 text-xs text-slate-600"
+              className="rounded-[var(--radius-pill)] border border-[var(--color-border)] px-2 py-1 text-xs text-[var(--color-muted)]"
             >
               {formatAttribute(attr)}
             </span>
