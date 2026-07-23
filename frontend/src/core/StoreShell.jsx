@@ -42,7 +42,7 @@ export default function StoreShell({ handle, children }) {
 
   return (
     <StoreContext.Provider value={store}>
-      <ThemeProvider theme={store.theme}>
+      <ThemeProvider theme={store.theme} themeConfig={store.themeConfig}>
         <CartProvider storeHandle={store.handle}>
           <Navbar />
           {children}

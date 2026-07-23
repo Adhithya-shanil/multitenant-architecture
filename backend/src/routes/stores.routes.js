@@ -7,6 +7,9 @@ const router = express.Router();
 /**
  * GET /api/stores
  * Lightweight list used by the home page grid (9 stores, 3 categories x 3 themes).
+ * Only carries the `category`/`theme` tokens - resolving what those tokens
+ * mean is the job of /api/categories/:token and /api/themes/:token, so a
+ * client that already has a token's config cached doesn't need it re-sent.
  */
 router.get('/', (req, res) => {
   const list = stores.map(({ id, handle, name, category, theme, tagline, logoEmoji }) => ({
@@ -23,9 +26,10 @@ router.get('/', (req, res) => {
 
 /**
  * GET /api/stores/:handle
- * This is the "first API" called when a storefront page loads.
- * The response carries `category` and `theme` - the two tokens the
- * frontend stores in state to decide which vertical UI + theme variables to apply.
+ * This is the "first API" called when a storefront page loads. It only
+ * carries the `category`/`theme` tokens - the frontend fetches (and caches)
+ * their resolved config separately via /api/categories/:token and
+ * /api/themes/:token, so identical tokens across stores aren't re-fetched.
  */
 router.get('/:handle', (req, res) => {
   const store = stores.find((s) => s.handle === req.params.handle);

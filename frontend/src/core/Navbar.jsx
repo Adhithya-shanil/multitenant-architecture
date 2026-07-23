@@ -1,15 +1,14 @@
 import { Link } from 'react-router-dom';
 import { useOptionalStore } from '../context/StoreContext';
 import { useOptionalCart } from './cart/CartContext';
-import { getCategoryConfig } from '../config/categoryConfig';
 
 // One Navbar, used on the home page and on every store page. It never
 // branches on category with if/else - it just reads whatever the current
-// store (if any) + that category's config say to show.
+// store (if any) sent back as its categoryConfig.
 export default function Navbar() {
   const store = useOptionalStore();
   const cart = useOptionalCart();
-  const config = store ? getCategoryConfig(store.category) : null;
+  const config = store ? store.categoryConfig : null;
   const itemCount = cart?.itemCount ?? 0;
 
   const cartBadge = (

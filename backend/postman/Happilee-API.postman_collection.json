@@ -58,7 +58,7 @@
               "host": ["{{baseUrl}}"],
               "path": ["api", "stores", "spice-garden"]
             },
-            "description": "This is the \"first API\" called when /:store_name loads. Response carries the `category` and `theme` tokens the frontend caches in state.\n\ncurl -s {{baseUrl}}/api/stores/spice-garden"
+            "description": "This is the \"first API\" called when /:store_name loads. Response only carries the `category` and `theme` tokens - resolving what they mean (colors, nav links, widget, ...) is a separate call to Config - Themes & Categories, so a client that already has that token cached doesn't need it re-sent.\n\ncurl -s {{baseUrl}}/api/stores/spice-garden"
           },
           "response": []
         },
@@ -185,6 +185,123 @@
               "path": ["api", "stores", "not-a-store"]
             },
             "description": "Unknown handle should return 404 with an error message.\n\ncurl -s -w \"\\nSTATUS:%{http_code}\\n\" {{baseUrl}}/api/stores/not-a-store"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Config - Themes & Categories",
+      "item": [
+        {
+          "name": "Theme - theme1 (Warm)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/themes/theme1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "themes", "theme1"]
+            },
+            "description": "Resolves a theme token to its CSS-variable dictionary (colors, radius, fonts). Fetched and cached once per token on the frontend, independent of any specific store.\n\ncurl -s {{baseUrl}}/api/themes/theme1"
+          },
+          "response": []
+        },
+        {
+          "name": "Theme - theme2 (Bold)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/themes/theme2",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "themes", "theme2"]
+            },
+            "description": "curl -s {{baseUrl}}/api/themes/theme2"
+          },
+          "response": []
+        },
+        {
+          "name": "Theme - theme3 (Minimal)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/themes/theme3",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "themes", "theme3"]
+            },
+            "description": "curl -s {{baseUrl}}/api/themes/theme3"
+          },
+          "response": []
+        },
+        {
+          "name": "Theme - Not Found (expect 404)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/themes/theme99",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "themes", "theme99"]
+            },
+            "description": "Unknown theme token should return 404 with an error message.\n\ncurl -s -w \"\\nSTATUS:%{http_code}\\n\" {{baseUrl}}/api/themes/theme99"
+          },
+          "response": []
+        },
+        {
+          "name": "Category - food",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/categories/food",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "categories", "food"]
+            },
+            "description": "Resolves a category token to its config: nav links, footer note, products section title, and which vertical widget key the frontend registry should render (`foodOptions`). Fetched and cached once per token on the frontend.\n\ncurl -s {{baseUrl}}/api/categories/food"
+          },
+          "response": []
+        },
+        {
+          "name": "Category - clothes",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/categories/clothes",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "categories", "clothes"]
+            },
+            "description": "Widget key: `sizeSelector`.\n\ncurl -s {{baseUrl}}/api/categories/clothes"
+          },
+          "response": []
+        },
+        {
+          "name": "Category - pharma",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/categories/pharma",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "categories", "pharma"]
+            },
+            "description": "Widget key: `prescriptionGate`.\n\ncurl -s {{baseUrl}}/api/categories/pharma"
+          },
+          "response": []
+        },
+        {
+          "name": "Category - Not Found (expect 404)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/categories/not-a-category",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "categories", "not-a-category"]
+            },
+            "description": "Unknown category token should return 404 with an error message.\n\ncurl -s -w \"\\nSTATUS:%{http_code}\\n\" {{baseUrl}}/api/categories/not-a-category"
           },
           "response": []
         }

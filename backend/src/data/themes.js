@@ -1,8 +1,9 @@
 // Each theme is just a bag of CSS custom properties. Adding a "theme4" later
-// means adding an entry here - no component code changes required, because
+// means adding an entry here - no frontend code changes required, because
 // every component reads colors/radius/fonts through var(--...) instead of
-// hardcoded Tailwind color classes.
-export const THEMES = {
+// hardcoded values. This dictionary is now served to the frontend instead of
+// being duplicated in the frontend bundle.
+const THEMES = {
   theme1: {
     name: 'Warm',
     vars: {
@@ -53,8 +54,10 @@ export const THEMES = {
   },
 };
 
-export const DEFAULT_THEME_TOKEN = 'theme1';
+const DEFAULT_THEME_TOKEN = 'theme1';
 
-export function getTheme(token) {
+function getTheme(token) {
   return THEMES[token] ?? THEMES[DEFAULT_THEME_TOKEN];
 }
+
+module.exports = { THEMES, getTheme };

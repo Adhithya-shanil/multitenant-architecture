@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useCart } from './cart/CartContext';
 import { useStore } from '../context/StoreContext';
-import { getVerticalProductExtra } from '../verticals/registry';
+import { getVerticalWidget } from '../verticals/registry';
 
 // Generic metafields-style attribute renderer: a "size" select and a "dosage"
 // text field don't share a shape, so instead of fixed columns each product
@@ -29,9 +29,9 @@ function computeLineId(productId, selections) {
 }
 
 export default function ProductCard({ product }) {
-  const { category } = useStore();
+  const { categoryConfig } = useStore();
   const { items, addItem, updateQuantity } = useCart();
-  const vertical = getVerticalProductExtra(category);
+  const VerticalWidget = getVerticalWidget(categoryConfig.widget);
 
   const [selections, setSelections] = useState({});
   const [isReady, setIsReady] = useState(true);
@@ -39,8 +39,8 @@ export default function ProductCard({ product }) {
   const lineId = computeLineId(product.id, selections);
   const cartItem = items.find((item) => item.lineId === lineId);
 
-  const badgeAttributes = vertical
-    ? product.attributes?.filter((attr) => !vertical.handledKeys.includes(attr.key))
+  const badgeAttributes = VerticalWidget
+    ? product.attributes?.filter((attr) => !categoryConfig.handledKeys.includes(attr.key))
     : product.attributes;
 
   function handleSelectionsChange(key, value) {
@@ -81,8 +81,8 @@ export default function ProductCard({ product }) {
         </div>
       )}
 
-      {vertical && (
-        <vertical.Component
+      {VerticalWidget && (
+        <VerticalWidget
           attributes={product.attributes}
           selections={selections}
           onSelectionsChange={handleSelectionsChange}

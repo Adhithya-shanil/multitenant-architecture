@@ -1,9 +1,8 @@
 import { useOptionalStore } from '../context/StoreContext';
-import { getCategoryConfig } from '../config/categoryConfig';
 
 export default function Footer() {
   const store = useOptionalStore();
-  const config = store ? getCategoryConfig(store.category) : null;
+  const config = store ? store.categoryConfig : null;
 
   return (
     <footer className="border-t border-[var(--color-border)] bg-[var(--color-surface)]">

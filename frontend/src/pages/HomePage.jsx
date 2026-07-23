@@ -1,14 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { fetchStores } from '../api/stores';
-import { getCategoryConfig } from '../config/categoryConfig';
+import { getCategoryConfig } from '../api/configCache';
 import LoadingSpinner from '../core/LoadingSpinner';
 import Navbar from '../core/Navbar';
 import Footer from '../core/Footer';
 
-function StoreCard({ store }) {
-  const categoryLabel = getCategoryConfig(store.category).label;
-
+function StoreCard({ store, categoryLabel }) {
   return (
     <Link
       to={`/${store.handle}`}
@@ -31,6 +29,7 @@ function StoreCard({ store }) {
 
 export default function HomePage() {
   const [stores, setStores] = useState([]);
+  const [categoryLabels, setCategoryLabels] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -38,8 +37,14 @@ export default function HomePage() {
     let isMounted = true;
 
     fetchStores()
-      .then((data) => {
-        if (isMounted) setStores(data);
+      .then(async (data) => {
+        // Only a handful of distinct categories across all stores - fetch
+        // each one once (via the cache) instead of once per store.
+        const uniqueCategories = [...new Set(data.map((store) => store.category))];
+        const configs = await Promise.all(uniqueCategories.map(getCategoryConfig));
+        if (!isMounted) return;
+        setStores(data);
+        setCategoryLabels(Object.fromEntries(uniqueCategories.map((category, i) => [category, configs[i].label])));
       })
       .catch((err) => {
         if (isMounted) setError(err.message);
@@ -87,7 +92,7 @@ export default function HomePage() {
         </header>
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {stores.map((store) => (
-            <StoreCard key={store.id} store={store} />
+            <StoreCard key={store.id} store={store} categoryLabel={categoryLabels[store.category]} />
           ))}
         </div>
       </main>

@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react';
 import { fetchStoreProducts } from '../api/stores';
 import { useStore } from '../context/StoreContext';
-import { getCategoryConfig } from '../config/categoryConfig';
 import LoadingSpinner from '../core/LoadingSpinner';
 import ProductCard from '../core/ProductCard';
 
 export default function StoreProducts({ handle }) {
   const store = useStore();
-  const categoryConfig = getCategoryConfig(store.category);
+  const { categoryConfig } = store;
 
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);

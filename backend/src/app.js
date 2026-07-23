@@ -1,6 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 const storesRouter = require('./routes/stores.routes');
+const themesRouter = require('./routes/themes.routes');
+const categoriesRouter = require('./routes/categories.routes');
 
 const app = express();
 
@@ -12,6 +14,8 @@ app.get('/api/health', (req, res) => {
 });
 
 app.use('/api/stores', storesRouter);
+app.use('/api/themes', themesRouter);
+app.use('/api/categories', categoriesRouter);
 
 app.use((req, res) => {
   res.status(404).json({ error: 'Not found' });
